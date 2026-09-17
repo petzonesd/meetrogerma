@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roger Ma — San Diego</title>
+<meta name="description" content="Roger Ma — founder of Pet Zone Tropical Fish, co-founder of Hakkai Aquascape Design Gallery, and builder of San Diego's freshwater aquarium world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1E1A;
+    --panel:#152A24;
+    --panel-2:#1B332B;
+    --sand:#EFE8D8;
+    --sand-dim:#C9C1AE;
+    --driftwood:#C6935C;
+    --koi:#C2573C;
+    --mist:#93AA9C;
+    --line: rgba(239,232,216,0.14);
+    --bg: var(--ink);
+    --fg: var(--sand);
+    --fg-dim: var(--mist);
+    --card: var(--panel);
+    --card-2: var(--panel-2);
+    --accent: var(--driftwood);
+    --accent-2: var(--koi);
+    --border: var(--line);
+  }
+  :root[data-theme="light"]{
+    --bg: var(--sand);
+    --fg: #16281F;
+    --fg-dim: #4A5F52;
+    --card: #FFFDF8;
+    --card-2: #F4EDDD;
+    --accent: #8A5A2B;
+    --accent-2: #A6402A;
+    --border: rgba(22,40,31,0.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: var(--ink);
+      --fg: var(--sand);
+      --fg-dim: var(--mist);
+      --card: var(--panel);
+      --card-2: var(--panel-2);
+      --accent: var(--driftwood);
+      --accent-2: var(--koi);
+      --border: var(--line);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Work Sans', -apple-system, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--accent); color:var(--ink); }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{ color:inherit; }
+  img{max-width:100%;}
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+  section{ position:relative; }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-size:19px; font-weight:600;
+    text-decoration:none; color:var(--fg);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand svg{ width:20px; height:20px; }
+  .navlinks{ display:flex; gap:28px; }
+  .navlinks a{
+    text-decoration:none; color:var(--fg-dim); font-size:14.5px;
+    transition:color .2s ease;
+  }
+  .navlinks a:hover{ color:var(--accent); }
+  .navtoggle{ display:none; background:none; border:none; color:var(--fg); cursor:pointer; }
+
+  /* HERO */
+  .hero{
+    padding:110px 0 90px;
+    overflow:hidden;
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .kicker{
+    font-size:14.5px; color:var(--fg-dim);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent-2); flex-shrink:0; }
+  .hero h1{
+    font-size:clamp(52px, 10vw, 104px);
+    line-height:0.96;
+    margin-bottom:22px;
+  }
+  .hero .sub{
+    font-size:clamp(18px, 2.4vw, 23px);
+    color:var(--fg-dim);
+    max-width:560px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    line-height:1.45;
+  }
+  .hero-graphic{
+    position:absolute; inset:0; z-index:1;
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .hero-cta{
+    margin-top:44px; display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:3px;
+    text-decoration:none; font-size:14.5px; font-weight:500;
+    border:1px solid var(--border);
+    transition:all .2s ease;
+  }
+  .btn.primary{ background:var(--accent); color:var(--ink); border-color:var(--accent); }
+  .btn.primary:hover{ background:var(--accent-2); border-color:var(--accent-2); }
+  .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* SECTION HEADERS */
+  .sec-head{ margin-bottom:44px; max-width:640px; }
+  .sec-head h2{ font-size:clamp(30px,4vw,42px); margin-bottom:14px; }
+  .sec-head p{ color:var(--fg-dim); font-size:16.5px; }
+  section.block{ padding:88px 0; border-top:1px solid var(--border); }
+
+  /* STORY */
+  .story-grid{ display:grid; grid-template-columns:1.3fr 0.9fr; gap:56px; align-items:start; }
+  .story-copy p{ margin:0 0 20px; color:var(--fg); font-size:17px; }
+  .story-copy p:last-child{ margin-bottom:0; }
+  .facts{
+    background:var(--card); border:1px solid var(--border); border-radius:4px;
+    padding:28px; position:sticky; top:96px;
+  }
+  .facts h3{ font-size:16px; margin-bottom:18px; color:var(--fg-dim); font-family:'Work Sans',sans-serif; font-weight:600; }
+  .facts dl{ margin:0; }
+  .facts .row{ display:flex; flex-direction:column; padding:13px 0; border-top:1px solid var(--border); }
+  .facts .row:first-of-type{ border-top:none; padding-top:0; }
+  .facts dt{ font-size:12.5px; color:var(--fg-dim); margin-bottom:4px; }
+  .facts dd{ margin:0; font-size:15px; }
+
+  /* VENTURES */
+  .venture-list{ display:flex; flex-direction:column; }
+  .venture{
+    display:grid; grid-template-columns:220px 1fr auto;
+    gap:24px; align-items:center;
+    padding:28px 0; border-top:1px solid var(--border);
+    text-decoration:none; color:inherit;
+  }
+  .venture:first-child{ border-top:none; }
+  .venture .vname{ font-family:'Fraunces', serif; font-size:23px; }
+  .venture .vname span{ display:block; font-family:'Work Sans',sans-serif; font-size:12.5px; color:var(--fg-dim); margin-top:4px; font-weight:500; }
+  .venture .vdesc{ color:var(--fg-dim); font-size:15px; }
+  .venture .varrow{ width:18px; height:18px; opacity:0.5; transition:transform .2s ease, opacity .2s ease; flex-shrink:0; }
+  .venture:hover .varrow{ transform:translate(3px,-3px); opacity:1; }
+  .venture:hover .vname{ color:var(--accent); }
+
+  .sites-mini{
+    margin-top:6px; display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .sites-mini a{
+    font-size:13px; padding:5px 11px; border:1px solid var(--border);
+    border-radius:20px; text-decoration:none; color:var(--fg-dim);
+    transition:all .2s ease;
+  }
+  .sites-mini a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* PRESS */
+  .press-list{ display:flex; flex-direction:column; }
+  .press-item{
+    display:grid; grid-template-columns:120px 1fr;
+    gap:24px; padding:26px 0; border-top:1px solid var(--border);
+    text-decoration:none; color:inherit;
+  }
+  .press-item:first-child{ border-top:none; }
+  .press-year{ font-family:'Fraunces', serif; font-size:15px; color:var(--fg-dim); padding-top:3px; }
+  .press-outlet{ font-size:13px; color:var(--accent); font-weight:600; margin-bottom:6px; }
+  .press-title{ font-family:'Fraunces', serif; font-size:19px; margin-bottom:6px; }
+  .press-desc{ color:var(--fg-dim); font-size:14.5px; }
+  .press-item:hover .press-title{ color:var(--accent); }
+
+  /* CONNECT */
+  .connect-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .connect-card{
+    background:var(--card); border:1px solid var(--border); border-radius:4px; padding:30px;
+  }
+  .connect-card h3{ font-size:20px; margin-bottom:10px; }
+  .connect-card p{ color:var(--fg-dim); font-size:15px; margin:0 0 16px; }
+  .handle-list{ display:flex; flex-direction:column; gap:10px; }
+  .handle-list span{ font-size:15px; }
+  .handle-list small{ color:var(--fg-dim); }
+
+  footer{
+    padding:40px 0; border-top:1px solid var(--border);
+    color:var(--fg-dim); font-size:13.5px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  }
+
+  @media (max-width:760px){
+    .navlinks{ position:fixed; top:64px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--border);
+      flex-direction:column; padding:18px 28px; gap:16px; display:none; }
+    .navlinks.open{ display:flex; }
+    .navtoggle{ display:block; }
+    .story-grid{ grid-template-columns:1fr; }
+    .facts{ position:static; }
+    .venture{ grid-template-columns:1fr; gap:8px; }
+    .venture .varrow{ display:none; }
+    .press-item{ grid-template-columns:1fr; gap:6px; }
+    .connect-grid{ grid-template-columns:1fr; }
+    section.block{ padding:64px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M2 12c3-4 7-6 11-6 4 0 7 2 9 4-2 3-5 5-9 5-4 0-8-1-11-3z" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="10.5" r=".9" fill="currentColor"/></svg>
+      Roger Ma
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#story">Story</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#press">Press</a>
+      <a href="#connect">Connect</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-graphic" id="heroGraphic">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+      <g stroke="var(--accent)" stroke-width="1.2" fill="none" opacity="0.55">
+        <path d="M -50 480 Q 150 420 250 470 Q 380 530 500 460 Q 620 400 760 470 Q 900 540 1100 460 Q 1200 430 1260 460"/>
+        <path d="M 900 600 C 880 500 950 460 930 380 C 915 320 970 280 950 200"/>
+        <path d="M 930 380 C 970 360 1010 370 1040 340"/>
+        <path d="M 900 460 C 860 440 830 450 800 430"/>
+      </g>
+      <g fill="var(--mist)" opacity="0.5">
+        <ellipse cx="960" cy="360" rx="6" ry="26" transform="rotate(-18 960 360)"/>
+        <ellipse cx="990" cy="330" rx="5" ry="22" transform="rotate(-8 990 330)"/>
+        <ellipse cx="920" cy="330" rx="5" ry="24" transform="rotate(-32 920 330)"/>
+        <ellipse cx="1030" cy="300" rx="4.5" ry="20" transform="rotate(-4 1030 300)"/>
+      </g>
+      <g fill="var(--accent)" opacity="0.35">
+        <circle cx="1080" cy="150" r="3.5"/>
+        <circle cx="1120" cy="220" r="2.5"/>
+        <circle cx="1050" cy="90" r="2"/>
+        <circle cx="1140" cy="130" r="2.5"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span> San Diego, since 2007</div>
+    <h1>Roger&nbsp;Ma</h1>
+    <p class="sub">Aquarist first. Then a shopkeeper, a gallery owner, a wholesaler, and now the guy quietly building a small empire of fish-obsessed websites — all from a childhood spent staring into tanks.</p>
+    <div class="hero-cta">
+      <a href="#story" class="btn primary">Read the story</a>
+      <a href="#ventures" class="btn ghost">See the ventures</a>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How a house full of animals became a freshwater empire</h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-copy">
+        <p>Roger grew up in a home that doubled as a small zoo — dogs, cats, birds, chickens, a backyard koi pond, and a rotating cast of fish tanks. Of everything that came through the house, it was the aquariums that stuck. There was something about the calm of a glass box full of life that never wore off.</p>
+        <p>In 2007, that pull turned into a business. Roger, along with his parents Jenney and Paul Ma, took over a local tropical fish shop on University Avenue in San Diego's Mid-City neighborhood. From day one, the store went all-in on freshwater only — no saltwater, no split focus — with the goal of being the local experts on the fish everyone else treated as an afterthought: rare plecos, discus, arowanas, oddballs, shrimp, and aquatic plants.</p>
+        <p>The timing wasn't easy. The shop opened right before the 2008 recession hit, and spending on fish and supplies dropped along with everything else. Pet Zone got through it by building an online sales channel early — a move that brought in business from well outside San Diego and set the pattern for how the company would keep growing: local roots, national reach.</p>
+        <p>By 2016, the freshwater-only bet had paid off enough to open a second location in the Convoy District, this one leaning into a hobby that was just starting to take off in the U.S. — aquascaping, the art of building natural underwater landscapes out of stone, wood, and plants.</p>
+        <p>Trips to aquascape galleries across Asia and Europe planted the next idea: San Diego, and really the U.S. as a whole, didn't have a proper gallery dedicated to the craft. So in 2020, Roger co-founded Hakkai — Aquascape Design Gallery, first in Liberty Station's Arts District and, since 2023, folded into the Convoy store. It's believed to be the first aquascape gallery of its kind in Southern California.</p>
+        <p>These days, Roger splits his time across purchasing, staffing, and customer care at Pet Zone's two stores, business development for Aquascape Supply Co., and a growing portfolio of species-specific websites built to make freshwater fishkeeping easier to learn — a hub-and-spoke approach to becoming the go-to authority on the hobby, locally and online.</p>
+      </div>
+      <div class="facts">
+        <h3>Quick facts</h3>
+        <dl>
+          <div class="row"><dt>Based</dt><dd>San Diego, California</dd></div>
+          <div class="row"><dt>Speaks</dt><dd>English, Cantonese, Mandarin, Teochew, Vietnamese</dd></div>
+          <div class="row"><dt>Education</dt><dd>Chinese University of Hong Kong · San Diego State University</dd></div>
+          <div class="row"><dt>Before fish</dt><dd>10+ years in international import/export &amp; e-commerce</dd></div>
+          <div class="row"><dt>Recognition</dt><dd>City of San Diego Small Business of the Week, 2022</dd></div>
+          <div class="row"><dt>Off the clock</dt><dd>Cigars, watches, cars, and chasing good food around San Diego</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ventures">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What he's building</h2>
+      <p>Two storefronts, a gallery, a wholesale business, and a growing network of sites — all pointed at the same freshwater world.</p>
+    </div>
+    <div class="venture-list">
+      <a class="venture" href="https://www.petzonesd.com" target="_blank" rel="noopener">
+        <div class="vname">Pet Zone Tropical Fish<span>Founded 2007</span></div>
+        <div class="vdesc">San Diego's freshwater-only specialty store, across two locations — Mid-City for monster fish and koi, Convoy District for aquascaping. Design store first, pet store second.</div>
+        <svg class="varrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+      <a class="venture" href="https://hakkai.com" target="_blank" rel="noopener">
+        <div class="vname">Hakkai<span>Co-founded 2020</span></div>
+        <div class="vdesc">Southern California's first aquascape design gallery — built after years of visiting studios across Asia and Europe, now living inside the Convoy store.</div>
+        <svg class="varrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+      <a class="venture" href="https://aquascapesupply.co" target="_blank" rel="noopener">
+        <div class="vname">Aquascape Supply Co.<span>Business development</span></div>
+        <div class="vdesc">A wholesale resource bringing aquatic plants and aquascaping hardscape from partners worldwide to the broader hobbyist and retail community.</div>
+        <svg class="varrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+      <a class="venture" href="https://sdfoodie.com" target="_blank" rel="noopener">
+        <div class="vname">SD Foodie<span>Personal project</span></div>
+        <div class="vdesc">Roger's own food-and-drink recommendation site — the other obsession, running on the side of the fish business.</div>
+        <svg class="varrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+      <div class="venture" style="cursor:default;">
+        <div class="vname">The species-site portfolio<span>Growing library</span></div>
+        <div class="vdesc">
+          A hub-and-spoke network of niche fishkeeping sites, each built to be the deepest resource on its species.
+          <div class="sites-mini">
+            <a href="https://arowana.co" target="_blank" rel="noopener">Arowana.co</a>
+            <a href="https://flowerhorn.co" target="_blank" rel="noopener">Flowerhorn.co</a>
+            <a href="https://puffercentral.com" target="_blank" rel="noopener">PufferCentral.com</a>
+            <a href="https://bettabelieve.com" target="_blank" rel="noopener">BettaBelieve.com</a>
+            <a href="https://shrimpsd.com" target="_blank" rel="noopener">ShrimpSD.com</a>
+            <a href="https://flowerhornhobby.com" target="_blank" rel="noopener">FlowerhornHobby.com</a>
+          </div>
+        </div>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="press">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>In the press</h2>
+      <p>A running record of the interviews and features that have covered the shop, the gallery, and the story behind them.</p>
+    </div>
+    <div class="press-list">
+      <a class="press-item" href="https://sdvoyager.com/interview/inspiring-conversations-with-roger-ma-of-pet-zone-tropical-fish-hakkai-aquascape-design-gallery" target="_blank" rel="noopener">
+        <div class="press-year">2026</div>
+        <div>
+          <div class="press-outlet">SD Voyager</div>
+          <div class="press-title">Inspiring Conversations with Roger Ma</div>
+          <div class="press-desc">A long-form retrospective on the road from a childhood full of pets to running Pet Zone and Hakkai side by side.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://sdvoyager.com/interview/hidden-gems-meet-roger-ma-of-pet-zone-tropical-fish/" target="_blank" rel="noopener">
+        <div class="press-year">2023</div>
+        <div>
+          <div class="press-outlet">SD Voyager</div>
+          <div class="press-title">Hidden Gems: Meet Roger Ma of Pet Zone Tropical Fish</div>
+          <div class="press-desc">On turning a childhood fascination with fishkeeping into a community hub for San Diego aquarium hobbyists.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.sandiego.gov/sites/default/files/1.28.22_sbotw_-_pet_zone_tropical_fish.pdf" target="_blank" rel="noopener">
+        <div class="press-year">2022</div>
+        <div>
+          <div class="press-outlet">City of San Diego</div>
+          <div class="press-title">Small Business of the Week</div>
+          <div class="press-desc">Councilmember Chris Cate recognized Pet Zone Tropical Fish for running the business like a genuine passion project.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://sdvoyager.com/interview/hidden-gems-meet-roger-ma-of-hakkai-aquascape-design-gallery-pet-zone-tropical-fish/" target="_blank" rel="noopener">
+        <div class="press-year">2021</div>
+        <div>
+          <div class="press-outlet">SD Voyager</div>
+          <div class="press-title">Hidden Gems: Meet Roger Ma of Hakkai and Pet Zone Tropical Fish</div>
+          <div class="press-desc">The story behind opening Southern California's first aquascape gallery in Liberty Station's Arts District.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://shoutoutsocal.com/meet-roger-ma-entrepreneur-small-business-owner/" target="_blank" rel="noopener">
+        <div class="press-year">2020</div>
+        <div>
+          <div class="press-outlet">Shoutout SoCal</div>
+          <div class="press-title">Meet Roger Ma — Entrepreneur &amp; Small Business Owner</div>
+          <div class="press-desc">On the team behind Pet Zone and the decision to launch Hakkai as the hobby's first dedicated gallery.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.petproductnews.com/industry-profiles/how-pet-zone-tropical-fish-expanded-the-aquascaping-hobby/article_60b1c76a-3fda-11eb-b764-d31eec17612b.html" target="_blank" rel="noopener">
+        <div class="press-year">2020</div>
+        <div>
+          <div class="press-outlet">Pet Product News</div>
+          <div class="press-title">How Pet Zone Tropical Fish Expanded the Aquascaping Hobby</div>
+          <div class="press-desc">Trade-press coverage of Hakkai's opening and the case for treating aquariums as art, not just décor.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.petage.com/pet-zone-is-building-an-aquascaping-community/" target="_blank" rel="noopener">
+        <div class="press-year">2016</div>
+        <div>
+          <div class="press-outlet">Pet Age</div>
+          <div class="press-title">Pet Zone is Building an Aquascaping Community</div>
+          <div class="press-desc">On the decision to open a second, aquascape-focused location in the Convoy District.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://sdvoyager.com/interview/meet-roger-ma-pet-zone-tropical-fish-convoy-district-kearny-mesa/" target="_blank" rel="noopener">
+        <div class="press-year">2016</div>
+        <div>
+          <div class="press-outlet">SD Voyager</div>
+          <div class="press-title">Meet Roger Ma of Pet Zone Tropical Fish in Convoy District</div>
+          <div class="press-desc">A look back at taking over a family-owned fish shop in 2007 and staying freshwater-only ever since.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.youtube.com/watch?v=wAFTxQ3kA6I" target="_blank" rel="noopener">
+        <div class="press-year">Video</div>
+        <div>
+          <div class="press-outlet">Welcome to Convoy</div>
+          <div class="press-title">Pet Zone Tropical Fish Paradise, with Roger Ma</div>
+          <div class="press-desc">A neighborhood video feature on San Diego's only freshwater, aquascape-focused fish store.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="connect">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Find him</h2>
+    </div>
+    <div class="connect-grid">
+      <div class="connect-card">
+        <h3>Around the web</h3>
+        <p>Posting as lifeenjoyer / lifeenjoyersd across most platforms.</p>
+        <div class="handle-list">
+          <span>@lifeenjoyer <small>— primary handle</small></span>
+          <span>@lifeenjoyersd <small>— used where the primary is taken</small></span>
+        </div>
+      </div>
+      <div class="connect-card">
+        <h3>The storefronts</h3>
+        <p>For fish, plants, hardscape, or a chat about aquascaping — best reached through the shops directly.</p>
+        <div class="handle-list">
+          <span><a href="https://www.petzonesd.com" target="_blank" rel="noopener">petzonesd.com</a></span>
+          <span><a href="https://hakkai.com" target="_blank" rel="noopener">hakkai.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; width:100%;">
+    <span>Roger Ma — San Diego, CA</span>
+    <span>Freshwater since 2007</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // single orchestrated hero reveal
+  const hero = document.getElementById('heroGraphic');
+  const heroPaths = hero.querySelectorAll('path, ellipse, circle');
+  heroPaths.forEach((el, i) => {
+    el.style.opacity = 0;
+    el.style.transition = 'opacity 1.1s ease';
+    setTimeout(() => { el.style.opacity = ''; }, 120 + i * 90);
+  });
+</script>
+
+</body>
+</html>
