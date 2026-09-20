@@ -104,10 +104,13 @@
 
   /* HERO */
   .hero{
-    padding:110px 0 90px;
+    padding:80px 0 90px;
     overflow:hidden;
   }
   .hero .wrap{ position:relative; z-index:2; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
   .kicker{
     font-size:14.5px; color:var(--fg-dim);
     display:flex; align-items:center; gap:10px;
@@ -115,14 +118,14 @@
   }
   .kicker .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent-2); flex-shrink:0; }
   .hero h1{
-    font-size:clamp(52px, 10vw, 104px);
+    font-size:clamp(48px, 8vw, 88px);
     line-height:0.96;
     margin-bottom:22px;
   }
   .hero .sub{
-    font-size:clamp(18px, 2.4vw, 23px);
+    font-size:clamp(17px, 2vw, 21px);
     color:var(--fg-dim);
-    max-width:560px;
+    max-width:520px;
     font-family:'Fraunces', serif;
     font-style:italic;
     font-weight:400;
@@ -130,8 +133,17 @@
   }
   .hero-graphic{
     position:absolute; inset:0; z-index:1;
-    opacity:0.55;
+    opacity:0.28;
     pointer-events:none;
+  }
+  .hero-photo{
+    position:relative; z-index:2;
+    border-radius:6px; overflow:hidden;
+    border:1px solid var(--border);
+    aspect-ratio:3/4;
+  }
+  .hero-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .hero-cta{
     margin-top:44px; display:flex; gap:14px; flex-wrap:wrap;
@@ -167,6 +179,13 @@
   .facts .row:first-of-type{ border-top:none; padding-top:0; }
   .facts dt{ font-size:12.5px; color:var(--fg-dim); margin-bottom:4px; }
   .facts dd{ margin:0; font-size:15px; }
+  .story-photo{
+    margin:0 0 32px; border-radius:6px; overflow:hidden; border:1px solid var(--border);
+  }
+  .story-photo img{ width:100%; display:block; max-height:420px; object-fit:cover; }
+  .story-photo figcaption{
+    padding:12px 16px; font-size:13px; color:var(--fg-dim); background:var(--card);
+  }
 
   /* VENTURES */
   .venture-list{ display:flex; flex-direction:column; }
@@ -193,6 +212,9 @@
     transition:all .2s ease;
   }
   .sites-mini a:hover{ border-color:var(--accent); color:var(--accent); }
+  .ventures-intro{ display:grid; grid-template-columns:1fr 260px; gap:40px; align-items:start; margin-bottom:12px; }
+  .ventures-photo{ border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+  .ventures-photo img{ width:100%; display:block; aspect-ratio:4/5; object-fit:cover; }
 
   /* PRESS */
   .press-list{ display:flex; flex-direction:column; }
@@ -218,6 +240,10 @@
   .handle-list{ display:flex; flex-direction:column; gap:10px; }
   .handle-list span{ font-size:15px; }
   .handle-list small{ color:var(--fg-dim); }
+  .connect-with-photo{ display:grid; grid-template-columns:1fr 280px; gap:40px; align-items:start; }
+  .team-photo{ border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+  .team-photo img{ width:100%; display:block; }
+  .team-photo figcaption{ padding:12px 16px; font-size:13px; color:var(--fg-dim); background:var(--card); }
 
   footer{
     padding:40px 0; border-top:1px solid var(--border);
@@ -230,12 +256,18 @@
       flex-direction:column; padding:18px 28px; gap:16px; display:none; }
     .navlinks.open{ display:flex; }
     .navtoggle{ display:block; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ order:-1; max-width:280px; margin:0 auto; aspect-ratio:1/1; }
+    .ventures-intro{ grid-template-columns:1fr; }
+    .ventures-photo{ order:-1; max-width:220px; }
     .story-grid{ grid-template-columns:1fr; }
     .facts{ position:static; }
     .venture{ grid-template-columns:1fr; gap:8px; }
     .venture .varrow{ display:none; }
     .press-item{ grid-template-columns:1fr; gap:6px; }
     .connect-grid{ grid-template-columns:1fr; }
+    .connect-with-photo{ grid-template-columns:1fr; }
+    .team-photo{ order:-1; max-width:280px; margin:0 auto 8px; }
     section.block{ padding:64px 0; }
   }
 
@@ -289,12 +321,19 @@
     </svg>
   </div>
   <div class="wrap">
-    <div class="kicker"><span class="dot"></span> San Diego, since 2007</div>
-    <h1>Roger&nbsp;Ma</h1>
-    <p class="sub">Aquarist first. Then a shopkeeper, a gallery owner, a wholesaler, and now the guy quietly building a small empire of fish-obsessed websites — all from a childhood spent staring into tanks.</p>
-    <div class="hero-cta">
-      <a href="#story" class="btn primary">Read the story</a>
-      <a href="#ventures" class="btn ghost">See the ventures</a>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker"><span class="dot"></span> San Diego, since 2007</div>
+        <h1>Roger&nbsp;Ma</h1>
+        <p class="sub">Aquarist first. Then a shopkeeper, a gallery owner, a wholesaler, and now the guy quietly building a small empire of fish-obsessed websites — all from a childhood spent staring into tanks.</p>
+        <div class="hero-cta">
+          <a href="#story" class="btn primary">Read the story</a>
+          <a href="#ventures" class="btn ghost">See the ventures</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/roger-storefront.jpg" alt="Roger Ma outside Pet Zone Tropical Fish in San Diego">
+      </div>
     </div>
   </div>
 </header>
@@ -306,6 +345,10 @@
     </div>
     <div class="story-grid">
       <div class="story-copy">
+        <figure class="story-photo">
+          <img src="images/roger-tankroom.jpg" alt="Roger Ma standing among the fish tanks at Pet Zone">
+          <figcaption>Between the rows at Pet Zone — the tank room he's spent most of two decades in.</figcaption>
+        </figure>
         <p>Roger grew up in a home that doubled as a small zoo — dogs, cats, birds, chickens, a backyard koi pond, and a rotating cast of fish tanks. Of everything that came through the house, it was the aquariums that stuck. There was something about the calm of a glass box full of life that never wore off.</p>
         <p>In 2007, that pull turned into a business. Roger, along with his family, took over a local tropical fish shop on University Avenue in San Diego's Mid-City neighborhood. From day one, the store went all-in on freshwater only — no saltwater, no split focus — with the goal of being the local experts on the fish everyone else treated as an afterthought: rare plecos, discus, arowanas, oddballs, shrimp, and aquatic plants.</p>
         <p>The timing wasn't easy. The shop opened right before the 2008 recession hit, and spending on fish and supplies dropped along with everything else. Pet Zone got through it by building an online sales channel early — a move that brought in business from well outside San Diego and set the pattern for how the company would keep growing: local roots, national reach.</p>
@@ -331,9 +374,14 @@
 
 <section class="block" id="ventures">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>What he's building</h2>
-      <p>Two storefronts, a gallery, a wholesale business, and a growing network of sites — all pointed at the same freshwater world.</p>
+    <div class="ventures-intro">
+      <div class="sec-head" style="margin-bottom:0;">
+        <h2>What he's building</h2>
+        <p>Two storefronts, a gallery, a wholesale business, and a growing network of sites — all pointed at the same freshwater world.</p>
+      </div>
+      <div class="ventures-photo">
+        <img src="images/roger-aquascape.jpg" alt="Roger Ma setting up a Hakkai aquascape display">
+      </div>
     </div>
     <div class="venture-list">
       <a class="venture" href="https://www.petzonesd.com" target="_blank" rel="noopener">
@@ -390,6 +438,14 @@
           <div class="press-desc">A long-form retrospective on the road from a childhood full of pets to running Pet Zone and Hakkai side by side.</div>
         </div>
       </a>
+      <a class="press-item" href="https://sdvoyager.com/interview/an-inspired-chat-with-roger-ma-of-convoy-district-mid-city-highlight/" target="_blank" rel="noopener">
+        <div class="press-year">2025</div>
+        <div>
+          <div class="press-outlet">SD Voyager</div>
+          <div class="press-title">An Inspired Chat with Roger Ma of Convoy District &amp; Mid-City</div>
+          <div class="press-desc">On customer loyalty, growing up multilingual, and building a business around community rather than price.</div>
+        </div>
+      </a>
       <a class="press-item" href="https://sdvoyager.com/interview/hidden-gems-meet-roger-ma-of-pet-zone-tropical-fish/" target="_blank" rel="noopener">
         <div class="press-year">2023</div>
         <div>
@@ -406,12 +462,36 @@
           <div class="press-desc">Councilmember Chris Cate recognized Pet Zone Tropical Fish for running the business like a genuine passion project.</div>
         </div>
       </a>
+      <a class="press-item" href="https://shoutoutsocal.com/meet-roger-ma-business-owner-entrepreneur/" target="_blank" rel="noopener">
+        <div class="press-year">2022</div>
+        <div>
+          <div class="press-outlet">Shoutout SoCal</div>
+          <div class="press-title">Meet Roger Ma | Business Owner &amp; Entrepreneur</div>
+          <div class="press-desc">On building community over the years, the road to opening Hakkai, and competing on service rather than price.</div>
+        </div>
+      </a>
       <a class="press-item" href="https://sdvoyager.com/interview/hidden-gems-meet-roger-ma-of-hakkai-aquascape-design-gallery-pet-zone-tropical-fish/" target="_blank" rel="noopener">
         <div class="press-year">2021</div>
         <div>
           <div class="press-outlet">SD Voyager</div>
           <div class="press-title">Hidden Gems: Meet Roger Ma of Hakkai and Pet Zone Tropical Fish</div>
           <div class="press-desc">The story behind opening Southern California's first aquascape gallery in Liberty Station's Arts District.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://boldjourney.com/meet-roger-ma/" target="_blank" rel="noopener">
+        <div class="press-year">Interview</div>
+        <div>
+          <div class="press-outlet">Bold Journey</div>
+          <div class="press-title">Meet Roger Ma</div>
+          <div class="press-desc">On the work ethic behind Pet Zone, and the networking and vendor relationships that helped it grow.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://canvasrebel.com/meet-roger-ma-entrepreneur-business-owner/" target="_blank" rel="noopener">
+        <div class="press-year">Interview</div>
+        <div>
+          <div class="press-outlet">CanvasRebel</div>
+          <div class="press-title">Meet Roger Ma | Entrepreneur &amp; Business Owner</div>
+          <div class="press-desc">An entrepreneur-interview feature on the path from childhood hobbyist to Pet Zone and Hakkai owner.</div>
         </div>
       </a>
       <a class="press-item" href="https://shoutoutsocal.com/meet-roger-ma-entrepreneur-small-business-owner/" target="_blank" rel="noopener">
@@ -431,11 +511,19 @@
         </div>
       </a>
       <a class="press-item" href="https://www.petage.com/pet-zone-is-building-an-aquascaping-community/" target="_blank" rel="noopener">
-        <div class="press-year">2016</div>
+        <div class="press-year">2018</div>
         <div>
           <div class="press-outlet">Pet Age</div>
           <div class="press-title">Pet Zone is Building an Aquascaping Community</div>
           <div class="press-desc">On the decision to open a second, aquascape-focused location in the Convoy District.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.petzonesd.com/blog/we-are-featured-in-the-aquatic-retailer-segment-qa-roundtable-article-of-pet-product-news-magazine/" target="_blank" rel="noopener">
+        <div class="press-year">2017</div>
+        <div>
+          <div class="press-outlet">Pet Product News</div>
+          <div class="press-title">Retailer Roundtable: The Future of Fishkeeping</div>
+          <div class="press-desc">Pet Zone's take on where the aquatics segment of the pet industry was headed, in a magazine Q&amp;A roundup.</div>
         </div>
       </a>
       <a class="press-item" href="https://sdvoyager.com/interview/meet-roger-ma-pet-zone-tropical-fish-convoy-district-kearny-mesa/" target="_blank" rel="noopener">
@@ -444,6 +532,14 @@
           <div class="press-outlet">SD Voyager</div>
           <div class="press-title">Meet Roger Ma of Pet Zone Tropical Fish in Convoy District</div>
           <div class="press-desc">A look back at taking over a family-owned fish shop in 2007 and staying freshwater-only ever since.</div>
+        </div>
+      </a>
+      <a class="press-item" href="https://www.petzonesd.com/blog/pet-zone-tropical-fish-featured-in-pet-product-news-international/" target="_blank" rel="noopener">
+        <div class="press-year">2016</div>
+        <div>
+          <div class="press-outlet">Pet Product News</div>
+          <div class="press-title">First Magazine Feature for the Kearny Mesa Store</div>
+          <div class="press-desc">Pet Zone's first magazine profile, covering the newly opened Convoy District location.</div>
         </div>
       </a>
       <a class="press-item" href="https://www.youtube.com/watch?v=wAFTxQ3kA6I" target="_blank" rel="noopener">
@@ -463,23 +559,29 @@
     <div class="sec-head">
       <h2>Find him</h2>
     </div>
-    <div class="connect-grid">
-      <div class="connect-card">
-        <h3>Around the web</h3>
-        <p>Posting as lifeenjoyer / lifeenjoyersd across most platforms.</p>
-        <div class="handle-list">
-          <span>@lifeenjoyer <small>— primary handle</small></span>
-          <span>@lifeenjoyersd <small>— used where the primary is taken</small></span>
+    <div class="connect-with-photo">
+      <div class="connect-grid">
+        <div class="connect-card">
+          <h3>Around the web</h3>
+          <p>Posting as lifeenjoyer / lifeenjoyersd across most platforms.</p>
+          <div class="handle-list">
+            <span>@lifeenjoyer <small>— primary handle</small></span>
+            <span>@lifeenjoyersd <small>— used where the primary is taken</small></span>
+          </div>
+        </div>
+        <div class="connect-card">
+          <h3>The storefronts</h3>
+          <p>For fish, plants, hardscape, or a chat about aquascaping — best reached through the shops directly.</p>
+          <div class="handle-list">
+            <span><a href="https://www.petzonesd.com" target="_blank" rel="noopener">petzonesd.com</a></span>
+            <span><a href="https://hakkai.com" target="_blank" rel="noopener">hakkai.com</a></span>
+          </div>
         </div>
       </div>
-      <div class="connect-card">
-        <h3>The storefronts</h3>
-        <p>For fish, plants, hardscape, or a chat about aquascaping — best reached through the shops directly.</p>
-        <div class="handle-list">
-          <span><a href="https://www.petzonesd.com" target="_blank" rel="noopener">petzonesd.com</a></span>
-          <span><a href="https://hakkai.com" target="_blank" rel="noopener">hakkai.com</a></span>
-        </div>
-      </div>
+      <figure class="team-photo">
+        <img src="images/roger-team.jpg" alt="Roger Ma with the Pet Zone crew in the store">
+        <figcaption>Roger with part of the Pet Zone crew.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
